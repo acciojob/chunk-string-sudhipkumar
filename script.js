@@ -1,8 +1,20 @@
-function stringChop(str, size) {
-  // your code here
+function chunkString(str, chunkSize) {
+    if (!str) return []; // Handle null or empty string
+
+    let result = [];
+    for (let i = 0; i < str.length; i += chunkSize) {
+        result.push(str.substring(i, i + chunkSize));
+    }
+    return result;
 }
 
-// Do not change the code below
-const str = prompt("Enter String.");
-const size = prompt("Enter Chunk Size.");
-alert(stringChop(str, size));
+// Get user input
+let inputString = prompt("Enter a string:");
+let chunkSize = parseInt(prompt("Enter chunk size:"), 10);
+
+if (isNaN(chunkSize) || chunkSize <= 0) {
+    alert("Invalid chunk size! Please enter a positive number.");
+} else {
+    let chunks = chunkString(inputString, chunkSize);
+    alert("Chunked Array: " + JSON.stringify(chunks));
+}
