@@ -1,5 +1,6 @@
 function chunkString(str, chunkSize) {
-    if (!str) return []; // Handle null or empty string
+    if (str === null || str === undefined) return []; // Handle null/undefined input
+    if (chunkSize <= 0) return []; // Handle invalid chunk sizes
 
     let result = [];
     for (let i = 0; i < str.length; i += chunkSize) {
